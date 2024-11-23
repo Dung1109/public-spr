@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/cert")
@@ -37,5 +38,10 @@ public class CertController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCert(@PathVariable String id) {
         return ResponseEntity.ok(certService.deleteCert(id));
+    }
+
+    @GetMapping("/paging")
+    public ResponseEntity<Map<String,Object>> getAllCertsPaging(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size) {
+        return ResponseEntity.ok(certService.getAllCertsPaging(page, size));
     }
 }
