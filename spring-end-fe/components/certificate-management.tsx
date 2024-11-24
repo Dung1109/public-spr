@@ -349,20 +349,18 @@ export default function CertificateManagement() {
                         >
                             Reset
                         </Button>
+                        <Button 
+                            type="button" 
+                            variant="warning" 
+                            className="bg-yellow-500 hover:bg-yellow-600"
+                            onClick={() => classifyMutation.mutate()}
+                            disabled={classifyMutation.isPending}
+                        >
+                            {classifyMutation.isPending ? 'Classifying...' : 'Classify'}
+                        </Button>
                     </div>
                 </form>
             </Form>
-
-            <div className="flex justify-end">
-                <Button 
-                    variant="warning" 
-                    className="bg-yellow-500 hover:bg-yellow-600"
-                    onClick={() => classifyMutation.mutate()}
-                    disabled={classifyMutation.isPending}
-                >
-                    {classifyMutation.isPending ? 'Classifying...' : 'Classify'}
-                </Button>
-            </div>
 
             <div className="border rounded-lg">
                 <Table>
